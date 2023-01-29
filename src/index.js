@@ -1,10 +1,11 @@
 const express = require("express")
 const router = require("./routes/route.js")
+const multer = require("multer");
 const mongoose = require("mongoose")
 const app = express()
 
 app.use(express.json())
-app.use(express.urlencoded({extended:true}))
+app.use(multer().any());
 
 mongoose.set("strictQuery",true)
 mongoose.connect("mongodb+srv://divyamala_:Dt25042000knp@divyamala.0cofsch.mongodb.net/ Frontend",{
@@ -16,6 +17,6 @@ mongoose.connect("mongodb+srv://divyamala_:Dt25042000knp@divyamala.0cofsch.mongo
 
 app.use("/",router)
 
-app.listen(process.env.Port||3000,()=>{
-    console.log("Express App Running On Port",+(process.env.Port||3000))
+app.listen(process.env.Port||3001,()=>{
+    console.log("Express App Running On Port",+(process.env.Port||3001))
 })
